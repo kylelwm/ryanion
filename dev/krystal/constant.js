@@ -1,0 +1,18 @@
+constant = {
+	PHASE: {
+		PRE_TRIP: "PRE_TRIP",
+		DURING_TRIP: "DURING_TRIP",
+		POST_TRIP: "POST_TRIP",
+	},
+	FLIGHT_REGEX: /[a-zA-Z]+[0-9]+[a-zA-Z]?/g,
+	FLIGHT_DIRECTION: {
+		OUTBOUND: "FLIGHT_0",
+		INBOUND: "FLIGHT_1"
+	},
+	EVENT_TYPE: {
+		ONLINE_CHECKIN: "ONLINE_CHECKIN",
+		UPLOAD_PHOTO: "UPLOAD_PHOTO"
+	}
+}
+
+module.exports = constant;
