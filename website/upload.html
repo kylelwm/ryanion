@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Kristel's uploading service</title>
+        <title>Kristel's Uploading Services</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -13,6 +13,13 @@
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+        <div id="scroller-anchor"></div>
+        <div id="scroller" class="sticky-scroll">
+            <div class="container">
+                <div class="albumName-top sticky-space"></div>
+                <p class="sticky-space"><span class="img-count"></span> Images selected</p>
+            </div>
+        </div>
         <nav class="navbar navbar-default">
             <div class="container">
                 <div class="collapse navbar-collapse">
@@ -24,22 +31,23 @@
             </div>
         </nav>
 
-        <div class="sticky-scroll">
-            <p><span class="img-count"></span> Images selected</p>
-        </div>
 
-        <div class="container">
-          <div class="row">
-            <h1>Facebook Image Uploader</h1>
-            <p>Hello! Please vet through the images you would like to upload!</p>
-            <p><span class="img-count"></span> Images selected</p>
-            <div>
+
+        <div class="container-flow">
+          <div class="upload-info">
+            <div class="">
+                <div>Album Title</div>
                 <input type="text" name="albumName" placeholder="My Holiday" class="albumName">
             </div>
-            <button class="btn btn-primary btn-lg" id="FBuploadBtn">Upload Photos</button>
+            <p><span class="img-count"></span> Images selected</p>
+            <div class="btn upload-btn" id="FBuploadBtn">Upload Photos</div>
           </div>
-          <div id="imagecarousell">
-            <h1>Image carousell here</h1>
+          <div class="body-info">
+            <div class="header-text">
+                <h2>Kristel BOT Facebook Image Uploader</h2>
+                <p>Hello! Please vet through the images you would like to upload!</p>
+            </div>
+            <div id="imagecarousell">
             <!-- <div class="img-items">
                 <div class="img-wrapper">
                     <div class="img-selector">
@@ -49,8 +57,10 @@
                     </div>
                 </div>
             </div> -->
+            </div>
+            </div>
           </div>
-        </div>
+
 
 
         <script src="js/jquery-3.1.1.min.js"></script>
