@@ -31,10 +31,8 @@ $(document).ready(function () {
       $( "#imagecarousell" ).append( '<div class="img-items"></div>' );
       var images = "";
       for (i = 0; i < array_image_urls.length; i++) {
-        console.log("print potato");
         images += '<div class="img-wrapper"><svg class="nc-icon glyph" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="48px" height="48px" viewBox="0 0 48 48"><g><path class="glyph-path glyph-path-selected" d="M24,1C11.3,1,1,11.3,1,24s10.3,23,23,23s23-10.3,23-23S36.7,1,24,1z M36.7,16.7l-16,16 C20.5,32.9,20.3,33,20,33s-0.5-0.1-0.7-0.3l-8-8c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0l7.3,7.3l15.3-15.3c0.4-0.4,1-0.4,1.4,0 S37.1,16.3,36.7,16.7z"></path></g></svg><div class="img-selector img-selected" state="selected"><div class="img-item img-item-'+ i + '">';
-        //images += '<img src="' +  array_image_urls[i] + '" class="thumbnail" state="selected">' + '</div></div></div>';
-        images += '<img src="' + '" class="thumbnail" state="selected">' + '</div></div></div></div>';
+        images += '</div></div></div></div>';
       }
       $( ".img-items" ).append( images );
 
@@ -66,6 +64,7 @@ $(document).ready(function () {
       selected.next().addClass("img-selected");
       selected.next().attr("state", "selected");
     }
+    update_selected_counter();
   });
 
   function populate_album_name(album_name) {
@@ -73,15 +72,23 @@ $(document).ready(function () {
     $(".albumName-top").html(album_name);
   }
 
+  function update_selected_counter() {
+    var count = 0;
+    if ($(".img-selected").length) {
+      count = $(".img-selected").length;
+    }
+    $(".img-count").html(count);
+  }
 
   function upload_to_fb() {
     console.log("button clicked");
     var selectedImgs = [];
-    $("img").each(function() {
+    $(".img-selector").each(function() {
       var state = $(this).attr("state");
       var imgUrl = "";
       if (state == "selected") {
-        imgUrl = $(this).attr("src");
+        imgUrl = $(this).find(".img-item").css('background-image');
+        imgUrl = imgUrl.replace('url(','').replace(')','').replace(/\"/gi, "");
         selectedImgs.push(imgUrl);
       }
     });
@@ -92,10 +99,9 @@ $(document).ready(function () {
 
   function moveScroller() {
     var $anchor = $("#scroller-anchor");
-    var $scroller = $-('#scroller');
+    var $scroller = $('#scroller');
 
     var move = function() {
-
         var st = $(window).scrollTop();
         var ot = $anchor.offset().top;
         if(st > ot) {
@@ -105,8 +111,8 @@ $(document).ready(function () {
             });
           $scroller.show();
         } else {
-            $scroller.hide();
             if(st <= ot) {
+              $scroller.hide();
                 $scroller.css({
                     position: "relative",
                     top: ""
